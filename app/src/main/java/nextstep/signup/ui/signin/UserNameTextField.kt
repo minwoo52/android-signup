@@ -46,7 +46,7 @@ fun UserNameTextField(
 
 @Preview
 @Composable
-fun UserNameTextFieldPreview() {
+private fun UserNameTextFieldPreview() {
     UserNameTextField(
         label = "Username",
         value = "ABCDEFG",

@@ -26,7 +26,7 @@ fun SignupSnackbar(
 
 @Preview
 @Composable
-fun SignupSnackbarPreview() {
+private fun SignupSnackbarPreview() {
     val hostState = SnackbarHostState()
 
     SignupSnackbar(

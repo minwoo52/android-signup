@@ -45,7 +45,7 @@ fun EmailTextField(
 
 @Preview
 @Composable
-fun EmailTextFieldPreview() {
+private fun EmailTextFieldPreview() {
     EmailTextField(
         label = "Email",
         value = "abc#abc.com",

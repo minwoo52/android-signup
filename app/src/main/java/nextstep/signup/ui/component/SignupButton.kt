@@ -51,7 +51,7 @@ fun SignupButton(
 
 @Preview(name = "enable")
 @Composable
-fun SignupButtonEnablePreview() {
+private fun SignupButtonEnablePreview() {
     SignupButton(
         text = "Sign Up",
         onClick = { }
@@ -60,7 +60,7 @@ fun SignupButtonEnablePreview() {
 
 @Preview(name = "disabled", showBackground = true)
 @Composable
-fun SignupButtonDisablePreview() {
+private fun SignupButtonDisablePreview() {
     SignupButton(
         text = "Sign Up",
         onClick = { },

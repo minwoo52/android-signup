@@ -99,13 +99,13 @@ fun SignupTextField(
     )
 }
 
-class SignupTextFieldPreviewProvider : PreviewParameterProvider<Boolean> {
+private class SignupTextFieldPreviewProvider : PreviewParameterProvider<Boolean> {
     override val values = sequenceOf(false, true)
 }
 
 @Preview
 @Composable
-fun SignupTextFieldPreview(
+private fun SignupTextFieldPreview(
     @PreviewParameter(SignupTextFieldPreviewProvider::class) isError: Boolean
 ) {
     SignupTextField(

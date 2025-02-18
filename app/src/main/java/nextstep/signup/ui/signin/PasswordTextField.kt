@@ -48,7 +48,7 @@ fun PasswordTextField(
 
 @Preview
 @Composable
-fun PasswordTextFieldPreview() {
+private fun PasswordTextFieldPreview() {
     PasswordTextField(
         label = "Password",
         value = "abc123",

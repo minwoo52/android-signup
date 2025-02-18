@@ -138,7 +138,7 @@ fun SignupScreen() {
 }
 
 @Composable
-fun Title(
+private fun Title(
     text: String,
     modifier: Modifier = Modifier
 ) {
@@ -155,14 +155,14 @@ fun Title(
 
 @Preview
 @Composable
-fun SignupScreenPreview() {
+private fun SignupScreenPreview() {
     SignupScreen()
 }
 
 @Preview(name = "LightThemePreview")
 @Preview(name = "DarkThemePreview", uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun SignupTitlePreview() {
+private fun SignupTitlePreview() {
     SignupTheme {
         Surface {
             Title(text = "테스트")
