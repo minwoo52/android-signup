@@ -27,8 +27,8 @@
 - [x] 스낵바 컴포넌트 추가
 - [x] 활성화 된 SignUp 버튼 클릭시 스낵바 호출
 - [x] SignupValidator 단위 테스트 추가
-- [ ] 3단계 코드리뷰 항목
+- [x] 3단계 코드리뷰 항목
   - [x] SignupTextField 관심사 분리
   - [x] SignupValidator 관심사 분리
-  - [ ] 컴포넌트 및 Validator 변경에 따른 UI 테스트 코드 수정
-- [ ] SignupScreen 테스트 코드 작성
+  - [x] 컴포넌트 및 Validator 변경에 따른 UI 테스트 코드 수정
+- [x] SignupScreen 테스트 코드 작성
