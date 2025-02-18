@@ -31,3 +31,4 @@
   - [x] SignupTextField 관심사 분리
   - [x] SignupValidator 관심사 분리
   - [ ] 컴포넌트 및 Validator 변경에 따른 UI 테스트 코드 수정
+- [ ] SignupScreen 테스트 코드 작성
