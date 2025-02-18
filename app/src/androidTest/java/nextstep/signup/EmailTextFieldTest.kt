@@ -1,10 +1,15 @@
 package nextstep.signup
 
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
-import nextstep.signup.ui.signin.SignupScreen
+import nextstep.signup.ui.signin.EmailTextField
+import nextstep.signup.ui.signin.SignupValidator
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -17,7 +22,17 @@ class EmailTextFieldTest {
     @Before
     fun setUp() {
         composeTestRule.setContent {
-            SignupScreen()
+            var email by remember { mutableStateOf("") }
+            val emailValidation by remember {
+                derivedStateOf { SignupValidator.validateEmail(email) }
+            }
+
+            EmailTextField(
+                label = EMAIL_LABEL,
+                value = email,
+                onValueChange = { email = it },
+                validationResult = emailValidation,
+            )
         }
     }
 
@@ -30,6 +45,8 @@ class EmailTextFieldTest {
         composeTestRule
             .onNodeWithText(EMAIL_LABEL)
             .performTextInput(text)
+
+        composeTestRule.waitForIdle()
 
         // then
         composeTestRule
@@ -46,6 +63,8 @@ class EmailTextFieldTest {
         composeTestRule
             .onNodeWithText(EMAIL_LABEL)
             .performTextInput(text)
+
+        composeTestRule.waitForIdle()
 
         // then
         composeTestRule

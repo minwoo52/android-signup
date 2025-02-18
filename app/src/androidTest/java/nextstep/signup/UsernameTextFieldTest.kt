@@ -1,9 +1,15 @@
 package nextstep.signup
 
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performTextInput
-import nextstep.signup.ui.signin.SignupScreen
+import nextstep.signup.ui.signin.SignupValidator
+import nextstep.signup.ui.signin.UserNameTextField
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -16,7 +22,17 @@ class UsernameTextFieldTest {
     @Before
     fun setUp() {
         composeTestRule.setContent {
-            SignupScreen()
+            var username by remember { mutableStateOf("") }
+            val usernameValidation by remember {
+                derivedStateOf { SignupValidator.validateUsername(username) }
+            }
+
+            UserNameTextField(
+                label = USERNAME_LABEL,
+                value = username,
+                onValueChange = { username = it },
+                validationResult = usernameValidation,
+            )
         }
     }
 
@@ -29,6 +45,8 @@ class UsernameTextFieldTest {
         composeTestRule
             .onNodeWithText(USERNAME_LABEL)
             .performTextInput(text)
+
+        composeTestRule.waitForIdle()
 
         // then
         composeTestRule
@@ -46,6 +64,8 @@ class UsernameTextFieldTest {
             .onNodeWithText(USERNAME_LABEL)
             .performTextInput(text)
 
+        composeTestRule.waitForIdle()
+
         // then
         composeTestRule
             .onNodeWithText(USERNAME_LENGTH_ERROR)
@@ -61,6 +81,8 @@ class UsernameTextFieldTest {
         composeTestRule
             .onNodeWithText(USERNAME_LABEL)
             .performTextInput(text)
+
+        composeTestRule.waitForIdle()
 
         // then
         composeTestRule
@@ -78,6 +100,8 @@ class UsernameTextFieldTest {
             .onNodeWithText(USERNAME_LABEL)
             .performTextInput(text)
 
+        composeTestRule.waitForIdle()
+
         // then
         composeTestRule
             .onNodeWithText(USERNAME_INVALID_FORMAT_ERROR)
@@ -94,6 +118,8 @@ class UsernameTextFieldTest {
             .onNodeWithText(USERNAME_LABEL)
             .performTextInput(text)
 
+        composeTestRule.waitForIdle()
+
         // then
         composeTestRule
             .onNodeWithText(USERNAME_INVALID_FORMAT_ERROR)
@@ -109,6 +135,8 @@ class UsernameTextFieldTest {
         composeTestRule
             .onNodeWithText(USERNAME_LABEL)
             .performTextInput(text)
+
+        composeTestRule.waitForIdle()
 
         // then
         composeTestRule

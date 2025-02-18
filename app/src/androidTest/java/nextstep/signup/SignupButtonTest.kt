@@ -13,17 +13,23 @@ class SignupButtonTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
+    private fun setSignupButtonTest(
+        buttonText: String,
+        onClick: () -> Unit = {}
+    ) {
+        composeTestRule.setContent {
+            SignupButton(
+                text = buttonText,
+                onClick = onClick
+            )
+        }
+    }
+
     @Test
     fun signUpButton_ShowsText_WhenDisplayed() {
         // given
         val buttonText = "Sign Up"
-
-        composeTestRule.setContent {
-            SignupButton(
-                text = buttonText,
-                onClick = {}
-            )
-        }
+        setSignupButtonTest(buttonText)
 
         // then
         composeTestRule
@@ -36,13 +42,7 @@ class SignupButtonTest {
         // Given
         val buttonText = "Sign Up"
         var clicked = false
-
-        composeTestRule.setContent {
-            SignupButton(
-                text = buttonText,
-                onClick = { clicked = true }
-            )
-        }
+        setSignupButtonTest(buttonText) { clicked = true }
 
         // Then
         composeTestRule
